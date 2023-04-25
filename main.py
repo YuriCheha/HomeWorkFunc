@@ -1,23 +1,23 @@
-def login_attempts(func):
-    def wrapper():
-        attempts = 3
-        while attempts > 0:
-            username = input("Введите логин: ")
-            password = input("Введите пароль: ")
-            if username == 'Cheha Yury' and password == 'sacra136':
-                func()
-                break
-            else:
-                attempts -= 1
-                if attempts == 0:
-                    print("Вы исчерпали все попытки. Попробуйте позже.")
-                else:
-                    print(f"Неверный логин или пароль. Осталось попыток: {attempts}")
-    return wrapper
-@login_attempts
-def secret_function():
-    print("Функция выполнена успешно")
-print(secret_function())
+# def login_attempts(func):
+#     def wrapper():
+#         attempts = 3
+#         while attempts > 0:
+#             username = input("Введите логин: ")
+#             password = input("Введите пароль: ")
+#             if username == 'Cheha Yury' and password == 'sacra136':
+#                 func()
+#                 break
+#             else:
+#                 attempts -= 1
+#                 if attempts == 0:
+#                     print("Вы исчерпали все попытки. Попробуйте позже.")
+#                 else:
+#                     print(f"Неверный логин или пароль. Осталось попыток: {attempts}")
+#     return wrapper
+# @login_attempts
+# def secret_function():
+#     print("Функция выполнена успешно")
+# print(secret_function())
 
 # def author_info(**kwargs):
 #     full_name = kwargs.get('full_name', '')
