@@ -1,17 +1,23 @@
-# def authorization(username, password,max_attempts=3, message='Система заблокирована. Повторите попытку через 5 минут'):
-#     attempts = -1
-#     username = input('Введите имя пользователя: ')
-#     password = input('Введите пароль: ')
-#     while attempts < max_attempts:
-#         if username == 'Cheha Yury' and password == 'sacra136':
-#             print('Доступ разрешен')
-#             return True
-#         else:
-#             attempts += 1
-#             print(f"Неверный логин или пароль. Осталось попыток: {max_attempts - attempts}")
-#             return False
-# total = authorization(username, password)
-# print(total)
+def login_attempts(func):
+    def wrapper():
+        attempts = 3
+        while attempts > 0:
+            username = input("Введите логин: ")
+            password = input("Введите пароль: ")
+            if username == 'Cheha Yury' and password == 'sacra136':
+                func()
+                break
+            else:
+                attempts -= 1
+                if attempts == 0:
+                    print("Вы исчерпали все попытки. Попробуйте позже.")
+                else:
+                    print(f"Неверный логин или пароль. Осталось попыток: {attempts}")
+    return wrapper
+@login_attempts
+def secret_function():
+    print("Функция выполнена успешно")
+print(secret_function())
 
 # def author_info(**kwargs):
 #     full_name = kwargs.get('full_name', '')
@@ -27,17 +33,17 @@
 # author_info(full_name='Иван Сергеевич Тургенев', birth_date='28 октября 1818', death_date='22 августа 1883', description='русский писатель и общественный деятель')
 # print(author_info())
 
-def count_numbers(*args):
-    def get_digit_count(number):
-        return len(str(number))
-    two_digit_count = 0
-    three_digit_count = 0
-    for number in args:
-        digit_count = get_digit_count(number)
-        if digit_count == 2:
-            two_digit_count += 1
-        elif digit_count == 3:
-            three_digit_count += 1
-
-    print(f'Двузначных чисел: {two_digit_count}, трехзначных чисел: {three_digit_count}')
-print(count_numbers(156, 456, 88888))
+# def count_numbers(*args):
+#     def get_digit_count(number):
+#         return len(str(number))
+#     two_digit_count = 0
+#     three_digit_count = 0
+#     for number in args:
+#         digit_count = get_digit_count(number)
+#         if digit_count == 2:
+#             two_digit_count += 1
+#         elif digit_count == 3:
+#             three_digit_count += 1
+#
+#     print(f'Двузначных чисел: {two_digit_count}, трехзначных чисел: {three_digit_count}')
+# print(count_numbers(156, 456, 88888))
